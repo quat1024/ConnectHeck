@@ -22,7 +22,8 @@ function connectHeck()
     % Loop "forever"
     while true
         % Output the game board to the console
-        drawBoard(board, player);
+        printBoard(board, player);
+        renderBoard(board, player);
         
         % Have this player play
         % (this either prompts for input or runs the AI)
