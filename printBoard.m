@@ -4,36 +4,45 @@ function printBoard(board, player)
     width = size(board, 2);
     height = size(board, 1);
     
-    % Header
+    % Turn header.
     fprintf('\nPLAYER %.0f''s TURN:\n', player);
     
-    % Column markers
+    % Column markers.
     for row = 1 : width
         fprintf('%.0f', row)
     end
     
     fprintf('\n');
     
-    % The board itself
+    % The board itself!
     for row = 1 : height
         for col = 1 : width
+            % The number at this space on the game board.
             at = board(row,col);
-            c = ''''; %A single ' character lol
-            if at == 1
-                c = 'x';
-            elseif at == 2
-                c = 'o';
+            
+            % Now, let's choose a character to represent it.
+            % Players will be X and O, and blank spaces will be represented
+            % by an apostrophe.
+            
+            c = '''';
+            if at == 1 % player 1
+                c = 'X';
+            elseif at == 2 % player 2.
+                c = 'O';
             end
             
+            % And print the character.
             fprintf('%s', c);
         end
+        % All done printing this row so let's print a newline,
+        % to correspond to moving down to the next row of the game board.
         fprintf('\n');
     end
     
-    % A horizontal line
+    % A horizontal line to represent the bottom of the game board.
     fprintf(repmat('-', width, 1));
     
-    % And a newline
+    % And fianlly, a newline.
     fprintf('\n');
 end
 

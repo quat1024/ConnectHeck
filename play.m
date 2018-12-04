@@ -30,6 +30,7 @@ function [newBoard] = play(board, player, aiControlled)
             end
         end
         
+        % Ok they have selected a column, let's drop the piece in.
         newBoard = dropPiece(board, player, column);
     end
 end

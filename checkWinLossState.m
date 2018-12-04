@@ -7,7 +7,7 @@ function [ winState ] = checkWinLossState(board)
         return;
     end
     
-    
+    % TODO: stufffffff
     
     winState = 0;
 end
