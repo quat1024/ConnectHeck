@@ -1,15 +1,18 @@
-function renderBoard(board, player)
+function renderBoard(board, player, first)
     width = size(board, 2);
     height = size(board, 1);
     
     % Choose the figure and set the window.
-    
-    % Instead of using "figure(1)" we'll use this stupid hack.
-    set(0, 'CurrentFigure', 1);
-    % When you use figure, matlab raises that figure to the front.
-    % That steals focus away from the matlab console which is how players
-    % interact with the game. When you use this bizarre set hack that
-    % doesn't happen. Yeah I don't know either.
+    if first
+        figure(1);
+    else
+        % Instead of using "figure(1)" we'll use this stupid hack.
+        % When you use figure, matlab raises that figure to the front.
+        % That steals focus away from the matlab console which is how players
+        % interact with the game. When you use this bizarre set hack that
+        % doesn't happen. Yeah I don't know either.
+        set(0, 'CurrentFigure', 1);
+    end
     
     % Clear it
     clf('reset');

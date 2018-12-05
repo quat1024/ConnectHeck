@@ -19,11 +19,14 @@ function connectHeck()
     % The current player. Either 1 or 2.
     player = 1;
     
+    % Whether this is the first run.
+    first = true;
+    
     % Loop "forever"
     while true
         % Output the game board to the console
         printBoard(board, player);
-        renderBoard(board, player);
+        renderBoard(board, player, first);
         
         % Have this player play
         % (this either prompts for input or runs the AI)
@@ -38,6 +41,8 @@ function connectHeck()
         
         % Toggle between player 1 and 2
         player = 1 - player + 2;
+        
+        first = false;
     end
     
     if state == -1
