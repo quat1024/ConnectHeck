@@ -45,6 +45,10 @@ function connectHeck()
         first = false;
     end
     
+    % Draw the board 1 more time to show the final game state
+    printBoard(board, player);
+    renderBoard(board, player, false);
+    
     if state == -1
         fprintf('You both lose! The board filled up without a winner.\n');
     elseif state >= 1
