@@ -5,12 +5,24 @@ function [newBoard] = play(board, player, aiControlled)
     
     if aiControlled
         %Do AI stuff i guess
-        newBoard = dropPiece(board, player, 2);
+        tic;
+        aiColumn = heckIntelligence(board, player);
         
-        % Sleep...?
-        % This makes it feel a lot better to play against AI. Idk.
-        % Player 2's board doesn't fly past at warp speed
-        pause(1);
+        if aiColumn == -1
+            fprintf('AI wasn''t able to figure out where to drop a piece!\n');
+            newBoard = board;
+        else
+            newBoard = dropPiece(board, player, aiColumn);
+        end
+        
+        % Wait at least 1 second for the AI.
+        % This helps prevent "oh, the AI was unusually fast"
+        % from becoming a hint on its own. It also makes for a more
+        % consistent experience.
+        elapsedTime = toc;
+        if elapsedTime < 1
+            pause(1 - elapsedTime);
+        end
     else
         column = -1;
         % Prompt the player for a column to drop a piece in
