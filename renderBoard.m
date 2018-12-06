@@ -20,10 +20,11 @@ function renderBoard(board, player, first)
     % Set axes.
     % Offset the x axis starting point a little bit right to avoid making
     % space for the 0th column, which doesn't exist.
-    % Offset the y axis starting point a little bit down to avoid tokens
+    % Offset the y axis up to 1-index it.
+    % Offset the y axis a little bit down to avoid tokens
     % colliding with the numbers along the X axis which are useful for
     % gameplay so you can see what the column number is.
-    axis([1 width -0.1 height]);
+    axis([1 width 0.9 height + 0.99]);
     
     % Plot all of the game tokens
     hold on; %(to the same figure of course)
@@ -40,14 +41,14 @@ function renderBoard(board, player, first)
             % Do a little rejiggering to account for different coordinate
             % systems \_(:D)_/
             plotX = col;
-            plotY = height - row;
+            plotY = height - row + 1;
             % Plot the point on the connect 4 board
             plot(plotX, plotY, '.', 'MarkerSize', 70, 'color', playerColor(at));
         end
     end
     
     % Plot the player name too, why not?
-    text(width / 2, height - 0.5, sprintf('Player %.0f''s turn', player), 'color', playerColor(player));
+    text(width / 2, height + 0.5, sprintf('Player %.0f''s turn', player), 'color', playerColor(player));
     
     hold off;
 end
