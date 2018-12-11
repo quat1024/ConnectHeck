@@ -4,16 +4,21 @@ function [ winState ] = checkWinLossState(board)
     % If the top row of the board is totally full, game over, you all lose!
     if all(board(1,:))
         winState = -1;
-        return;
+        %return;
     end
     
-    % TODO: stufffffff
+    locs = {};
+    locs = [locs, findPatterns(board, [1, 1, 1, 1])];
+    locs = [locs, findPatterns(board, [1; 1; 1; 1])];
+    locs = [locs, findPatterns(board, [1, -1, -1, -1; -1, 1, -1, -1; -1, -1, 1, -1; -1, -1, -1, 1])];
+    locs = [locs, findPatterns(board, [-1, -1, -1, 1; -1, -1, 1, -1; -1, 1, -1, -1; 1, -1, -1, -1])];
+    
+    fprintf('Found wins: %.0f', length(locs));
+    
+    for x = locs
+        coords = x{1};
+       % fprintf('Winrar at %.0f %.0f\n', coords(1), coords(2));
+    end
     
     winState = 0;
-end
-
-function [winningPlayer] = checkRuns(board, offsetRow, offsetCol, runLength)
-    hasRun = false;
-    
-    
 end
