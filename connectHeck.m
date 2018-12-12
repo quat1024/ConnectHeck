@@ -16,6 +16,10 @@ function connectHeck()
         player2Ai = false;
     end
     
+    if player1Ai || player2Ai
+        smartness = input('AI difficulty (1 - 4)? ');
+    end
+    
     % Game board.
     % 0 indicates an empty square. 1 and 2 represents
     % tokens from either player, respectively.
@@ -37,7 +41,7 @@ function connectHeck()
         % Have this player play
         % (this either prompts for input or runs the AI)
         aiControlled = ((player == 1) && player1Ai) || ((player == 2) && player2Ai);
-        board = play(board, player, aiControlled);
+        board = play(board, player, aiControlled, smartness);
         
         % Check win/fail state and break the loop if the game is over
         state = checkWinLossState(board);

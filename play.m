@@ -1,4 +1,4 @@
-function [newBoard] = play(board, player, aiControlled)
+function [newBoard] = play(board, player, aiControlled, smartness)
 %PLAY prompts or AI-selects a piece to drop on the board
     boardWidth = size(board, 2);
     boardHeight = size(board, 1);
@@ -6,7 +6,7 @@ function [newBoard] = play(board, player, aiControlled)
     if aiControlled
         %Do AI stuff i guess
         tic;
-        [aiColumn, ~] = heckIntelligence(board, player, player, 3);
+        [aiColumn, ~] = heckIntelligence(board, player, player, smartness);
         
         if aiColumn == -1
             fprintf('AI wasn''t able to figure out where to drop a piece! Dropping randomly\n');
