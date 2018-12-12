@@ -6,12 +6,13 @@ function [newBoard] = play(board, player, aiControlled)
     if aiControlled
         %Do AI stuff i guess
         tic;
-        aiColumn = heckIntelligence(board, player);
+        [aiColumn, ~] = heckIntelligence(board, player, player, 3);
         
         if aiColumn == -1
             fprintf('AI wasn''t able to figure out where to drop a piece!\n');
             newBoard = board;
         else
+            fprintf('AI chooses column %.0f\n', aiColumn);
             newBoard = dropPiece(board, player, aiColumn);
         end
         
