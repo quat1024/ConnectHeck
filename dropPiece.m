@@ -3,6 +3,11 @@ function [newBoard] = dropPiece(board, player, column)
 %Returns the new gameborad with the piece dropped in.
     newBoard = board; % No changes by default.
     
+    if column <= 0 || column > size(board, 2);
+        % Break on obviously invalid input
+        return;
+    end
+    
 	% Make sure the column isn't already full
     if board(1, column) == 0
         % Not full? Ok, now loop from the top to the bottom

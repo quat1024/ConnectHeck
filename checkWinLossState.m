@@ -21,7 +21,7 @@ function [ winState ] = checkWinLossState(board)
         locs = [locs, findPatterns(board, [-1, -1, -1, p; -1, -1, p, -1; -1, p, -1, -1; p, -1, -1, -1])];
         
         %If there's a 4-in-a-row, that player won
-        if length(locs) > 0
+        if ~isempty(locs)
             winState = p;
             return;
         end

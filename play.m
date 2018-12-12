@@ -9,12 +9,19 @@ function [newBoard] = play(board, player, aiControlled)
         [aiColumn, ~] = heckIntelligence(board, player, player, 3);
         
         if aiColumn == -1
-            fprintf('AI wasn''t able to figure out where to drop a piece!\n');
-            newBoard = board;
-        else
-            fprintf('AI chooses column %.0f\n', aiColumn);
-            newBoard = dropPiece(board, player, aiColumn);
+            fprintf('AI wasn''t able to figure out where to drop a piece! Dropping randomly\n');
+            
+            % Choose a random non-full column
+            for i = randperm(boardWidth)
+                if board(1, i) ~= 0
+                    aiColumn = i;
+                    break;
+                end
+            end
         end
+        
+        fprintf('AI chooses column %.0f\n', aiColumn);
+        newBoard = dropPiece(board, player, aiColumn);
         
         % Wait at least 1 second for the AI.
         % This helps prevent "oh, the AI was unusually fast"

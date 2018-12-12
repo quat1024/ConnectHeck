@@ -50,6 +50,9 @@ function renderBoard(board, player, first)
     % Plot the player name too, why not?
     text(width / 2, height + 0.5, sprintf('Player %.0f''s turn', player), 'color', playerColor(player));
     
+    % Force the screen to draw
+    drawnow;
+    
     hold off;
 end
 

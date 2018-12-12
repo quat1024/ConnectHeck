@@ -5,6 +5,12 @@ function connectHeck()
     clear;
     fprintf('\n\n\nWelcome to Connect Heck\n\n\n');
     
+    % Ask about AI controlled players!
+    player1Ai = input('Use an AI player 1 (true / false)? ');
+    if isempty(player1Ai) % basic input sanitation...? lol
+        player1Ai = false;
+    end
+    
     player2Ai = input('Use an AI player 2 (true / false)? ');
     if isempty(player2Ai)
         player2Ai = false;
@@ -30,7 +36,7 @@ function connectHeck()
         
         % Have this player play
         % (this either prompts for input or runs the AI)
-        aiControlled = (player == 2) && player2Ai;
+        aiControlled = ((player == 1) && player1Ai) || ((player == 2) && player2Ai);
         board = play(board, player, aiControlled);
         
         % Check win/fail state and break the loop if the game is over
