@@ -3,7 +3,7 @@ function [rounded] = roundOctaveCompat(number)
 %Matlab expects a second parameter indicating the number of digits to round to.
 %Octave does not.
 %Thus, this function exists to enable compatibility between the versions.
-    if exist("OCTAVE_VERSION", "builtin") > 0
+    if exist('OCTAVE_VERSION', 'builtin') > 0
         rounded = round(number);
     else
         rounded = round(number, 0);
