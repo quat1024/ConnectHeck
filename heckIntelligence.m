@@ -20,13 +20,13 @@ function [ bestColumn, score ] = heckIntelligence(board, player, scoringPlayer, 
             score = -100000;
         else
             score = heckIntelligenceScore(newBoard, scoringPlayer);
-            if score > 100000
+            if score > 1000
                 % This position is great. Don't bother searching deeper
                 bestColumn = i;
                 return;
             end
             
-            if score < -100000
+            if score < -1000
                 % This position is awful. Don't bother searching deeper
                 bestColumn = -1;
                 return;
@@ -41,7 +41,7 @@ function [ bestColumn, score ] = heckIntelligence(board, player, scoringPlayer, 
         scores(i) = score;
     end
     
-    if recurse == 2
+    if recurse == 4
         for i = scores
             fprintf('%.0f ', i);
         end
