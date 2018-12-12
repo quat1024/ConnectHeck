@@ -31,7 +31,7 @@ function [newBoard] = play(board, player, aiControlled)
             column = input(sprintf('Player %.0f, what column? ', player));
             if isempty(column)
                 fprintf('Sorry, couldn''t hear you, come again?\n')
-            elseif column ~= round(column, 0)
+            elseif column ~= roundOctaveCompat(column)
                 fprintf('Enter a whole number lol\n')
             elseif column < 1 || column > boardWidth
                 fprintf('Enter a number between 1 and %.0f, please\n', boardWidth)
