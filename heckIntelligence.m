@@ -38,13 +38,6 @@ function [ bestColumn, score ] = heckIntelligence(board, player, scoringPlayer, 
         scores(i) = score;
     end
     
-    % A little debugging info, don't mind me...
-    if recurse == 3
-        for i = scores
-            fprintf('%.0f ', i);
-        end
-    end
-    
     % Decide on the best column to drop a piece.
     % Randomly order the columns before doing so.
     % This means that e.g. at the start of the game where all moves
