@@ -16,6 +16,7 @@ function connectHeck()
         player2Ai = false;
     end
     
+    smartness = 1;
     if player1Ai || player2Ai
         smartness = input('AI difficulty (1 - 4)? ');
     end
